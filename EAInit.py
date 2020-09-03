@@ -383,10 +383,10 @@ class AlignToEdge:
         edgeB = sel[1].SubObjects[0]
         # transform object A placement
         # edge vector
-        va = (edgeA.Curve.EndPoint - edgeA.Curve.StartPoint).normalize()
-        vb = (edgeB.Curve.EndPoint - edgeB.Curve.StartPoint).normalize()
+        va = (edgeA.lastVertex().Point - edgeA.firstVertex().Point).normalize()
+        vb = (edgeB.lastVertex().Point - edgeB.firstVertex().Point).normalize()
         # rot centre
-        centre = edgeA.Curve.StartPoint
+        centre = edgeA.firstVertex().Point
         # new placement
         new_plm = FreeCAD.Placement(FreeCAD.Vector(0,0,0), FreeCAD.Rotation(va, vb), centre)
         # apply placement
